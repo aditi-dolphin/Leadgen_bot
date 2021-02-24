@@ -1,0 +1,84 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- thankyou
+- deny
+- name
+- phone_number
+- email_address
+- mood_great
+- mood_unhappy
+- bot_challenge
+entities:
+- name
+- phone_number
+- email_address
+slots:
+  email_address:
+    type: unfeaturized
+    auto_fill: false
+  name:
+    type: unfeaturized
+    auto_fill: false
+  phone_number:
+    type: unfeaturized
+    auto_fill: false
+responses:
+  utter_greet:
+  - text: Welcome to the Bot powered by DolphinChat! 😊
+  utter_ask_name:
+  - text: Please tell us your name 😊
+  utter_ask_again_name:
+  - text: Sorry I didn't get your name can you please repeat.
+  utter_ask_phone_number:
+  - custom:
+      text: Please let us know your contact number📞 This will be helpful for our team to get in touch with you later.
+      quick_replies:
+        - content_type: "user_phone_number"
+          payload: "phone_number"
+  utter_ask_again_phone_number:
+  - text: Please mention phone number in this format<br>*+918888888888*
+  utter_ask_email_address:
+  - custom:
+      text: Can you drop your email_address?📧
+      quick_replies:
+        - content_type: "user_email"
+          payload: "email_address"
+  utter_ask_again_email:
+  - text: I am unable to validate this email address, can you tell your email again.
+  utter_thankyou:
+  - text: Thankyou! We have recieved your details. Someone from our team will get
+      in touch with you shortly!
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- utter_greet
+- utter_ask_name
+- utter_ask_again_name
+- utter_ask_phone_number
+- utter_ask_again_phone_number
+- utter_ask_email_address
+- utter_ask_again_email
+- utter_thankyou
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- action_greet
+- action_get_name
+- action_get_phone_number
+- action_get_email_address
+- action_deactivate_lead_form
+
+forms:
+- lead_form
